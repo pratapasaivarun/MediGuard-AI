@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: mediguard-ai-demo
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: MEDIGUARD_DB_PATH
+        value: /tmp/mediguard/mediguard.db
+      - key: MEDIGUARD_STORAGE_DIR
+        value: /tmp/mediguard
+      - key: CHROMA_DIR
+        value: /tmp/mediguard/chroma
+      - key: MEDIGUARD_OLLAMA_WARMUP
+        value: "false"
+      - key: MEDIGUARD_LLM_EXTRACTION_FALLBACK
+        value: "false"
+      - key: OLLAMA_TIMEOUT_SECONDS
+        value: "2"
+      - key: OLLAMA_EXPLAIN_TIMEOUT_SECONDS
+        value: "3"
