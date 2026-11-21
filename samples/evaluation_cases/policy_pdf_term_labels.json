@@ -288,7 +288,7 @@
       "copay_percent": 10,
       "room_limit_per_day": 5000,
       "icu_limit_per_day": null,
-      "exclusions": null,
+      "exclusions": ["cosmetic surgery"],
       "date_window": null
     },
     {
@@ -298,7 +298,7 @@
       "copay_percent": 10,
       "room_limit_per_day": 5000,
       "icu_limit_per_day": null,
-      "exclusions": null,
+      "exclusions": ["cosmetic surgery"],
       "date_window": {
         "pre_hospitalization_days": 30,
         "post_hospitalization_days": 60

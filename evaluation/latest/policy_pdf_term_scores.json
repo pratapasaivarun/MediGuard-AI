@@ -938,14 +938,22 @@
       },
       {
         "case_id": "edge_04",
-        "expected": null,
-        "actual": null,
+        "expected": [
+          "cosmetic surgery"
+        ],
+        "actual": [
+          "cosmetic surgery"
+        ],
         "match": true
       },
       {
         "case_id": "edge_05",
-        "expected": null,
-        "actual": null,
+        "expected": [
+          "cosmetic surgery"
+        ],
+        "actual": [
+          "cosmetic surgery"
+        ],
         "match": true
       }
     ],

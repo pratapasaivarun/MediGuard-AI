@@ -7,12 +7,12 @@
   "deductible": 5000,
   "copay_percent": 20,
   "expected_payable": 16000,
-  "insurer_paid": 15000,
+  "insurer_paid": 15200,
   "expected_status": "possible_discrepancy",
-  "calculation": "Expected (25000 - 5000) \u00d7 80% = 16000; difference 1000",
+  "calculation": "Expected payable INR 16000; insurer applied INR 1000 excess deductible, which changes payout by INR 800 after 20% co-pay",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Electrocardiogram ECG diagnostic test",
       "category": "INVESTIGATION",
       "amount": 25000,
       "date": "2026-08-12"
@@ -24,5 +24,6 @@
       "amount": 6000
     }
   ],
-  "expected_copay": 4000
+  "expected_copay": 3800,
+  "expected_provisional_status": "possible_discrepancy"
 }

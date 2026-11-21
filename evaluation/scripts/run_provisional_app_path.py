@@ -79,6 +79,7 @@ def _run_one(app, assess_claim, claimant: dict, reviewer: dict, case_dir: Path,
     actual_payable = rules.get("payable_amount")
     payable_range = rules.get("payable_range")
     actual_status = comparison.status if comparison else rules.get("status")
+    expected_provisional_status = expected.get("expected_provisional_status", expected.get("expected_status"))
     expected_payable = expected.get("expected_payable")
     if payable_range:
         low, high = float(payable_range["lower"]), float(payable_range["upper"])
@@ -94,6 +95,7 @@ def _run_one(app, assess_claim, claimant: dict, reviewer: dict, case_dir: Path,
         mismatch_causes.append("expected payable is outside the displayed estimate")
     row: dict[str, Any] = {
         "case_id": expected["case_id"], "expected": expected.get("expected_status", "not labeled for decision; extraction-only fixture"),
+        "expected_provisional_status": expected_provisional_status,
         "actual": actual_status, "result_shown": bool(rules), "provisional": True,
         "expected_payable": expected.get("expected_payable"), "provisional_payable": _plain(actual_payable),
         "provisional_payable_range": _plain(payable_range),
@@ -168,6 +170,10 @@ def main() -> int:
         "reviewer_confirmation_before_first_result": False,
         "evaluation_cases": labeled_rows,
         "evaluation_status_match": {"numerator": sum(row["actual"] == row["expected"] for row in labeled_rows), "denominator": len(labeled_rows)},
+        "evaluation_provisional_status_match": {
+            "numerator": sum(row["actual"] == row["expected_provisional_status"] for row in labeled_rows),
+            "denominator": len(labeled_rows),
+        },
         "evaluation_amount_or_range_shown": {"numerator": sum(row["amount_or_range_shown"] for row in labeled_rows), "denominator": len(labeled_rows)},
         "evaluation_result_shown": {"numerator": sum(row["result_shown"] for row in labeled_rows), "denominator": len(labeled_rows)},
         "evaluation_provisional_equals_confirmed": {"numerator": sum(row.get("provisional_amounts_equal_confirmed", False) and row.get("provisional_status_equal_confirmed", False) for row in labeled_rows), "denominator": len(labeled_rows)},
@@ -180,11 +186,13 @@ def main() -> int:
     OUTPUT.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({
         "evaluation_status_match": output["evaluation_status_match"],
+        "evaluation_provisional_status_match": output["evaluation_provisional_status_match"],
         "evaluation_amount_or_range_shown": output["evaluation_amount_or_range_shown"],
         "evaluation_result_shown": output["evaluation_result_shown"],
         "evaluation_provisional_equals_confirmed": output["evaluation_provisional_equals_confirmed"],
         "adversarial_result_shown": output["adversarial_result_shown"],
-        "cases": [{"case_id": row["case_id"], "expected": row["expected"], "actual": row["actual"],
+        "cases": [{"case_id": row["case_id"], "expected": row["expected"],
+                   "expected_provisional_status": row["expected_provisional_status"], "actual": row["actual"],
                    "result_shown": row["result_shown"], "reasons": row["specific_reasons"],
                    "expected_payable": row["expected_payable"], "displayed_estimate": row["displayed_estimate"],
                    "mismatch_causes": row["mismatch_causes"],

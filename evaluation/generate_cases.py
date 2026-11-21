@@ -32,17 +32,28 @@ def _write_policy(path: Path, row: dict) -> None:
         f"Deductible: INR {row['deductible']}",
         f"Co-pay: {row['copay_percent']}%",
         "Room limit per day: INR 5000",
-        "Pharmacy and medicines are payable during hospitalization.",
-        "Diagnostic investigations are payable during hospitalization.",
-        "The listed case policy terms are reviewer-confirmed synthetic labels.",
     ]
     if row["case_id"] == "edge_05":
-        lines.append("Pre-hospitalization expenses are covered up to 30 days before admission; post-hospitalization expenses are covered up to 60 days after discharge. Treatment outside these date windows is excluded.")
+        lines.extend([
+            "Pre-hospitalization expenses are covered up to 30 days before admission.",
+            "Post-hospitalization expenses are covered up to 60 days after discharge.",
+        ])
+    lines.extend([
+        "Pharmacy and medicines are payable during hospitalization.",
+        "Diagnostic investigations are payable during hospitalization.",
+    ])
+    if row.get("excluded_amount", 0):
+        lines.append("Cosmetic surgery is excluded from coverage.")
     doc = SimpleDocTemplate(str(path), pagesize=A4)
     doc.build([Paragraph(line, STYLES["BodyText"]) for line in lines])
 
 
 def _write_bill(path: Path, row: dict, scanned: bool) -> None:
+    labeled_items = row.get("expected_line_items") or []
+    line_description = (
+        labeled_items[0].get("description", "Eligible treatment")
+        if labeled_items else "Eligible treatment"
+    )
     if scanned:
         image = Image.new("RGB", (1250, 1700), "white")
         draw = ImageDraw.Draw(image)
@@ -53,7 +64,7 @@ def _write_bill(path: Path, row: dict, scanned: bool) -> None:
             "Admission date: 10 Aug 2026",
             "Discharge date: 14 Aug 2026",
             "Description | Date | Qty | Rate | Amount" if row["case_id"] == "edge_05" else f"Treatment charges: INR {row['billed']}",
-            f"Eligible treatment | 01 Jun 2026 | 1 | {row['billed']} | {row['billed']}" if row["case_id"] == "edge_05" else "",
+            f"{line_description} | 01 Jun 2026 | 1 | {row['billed']} | {row['billed']}" if row["case_id"] == "edge_05" else "",
             f"Grand Total: INR {row['billed']}",
         ]
         font_path = Path(r"C:\Windows\Fonts\arial.ttf")
@@ -77,7 +88,7 @@ def _write_bill(path: Path, row: dict, scanned: bool) -> None:
         "Admission date: 10 Aug 2026",
         "Discharge date: 14 Aug 2026",
         "Description | Date | Qty | Rate | Amount",
-        f"Eligible treatment | 12 Aug 2026 | 1 | {row['eligible']} | {row['eligible']}",
+        f"{line_description} | 12 Aug 2026 | 1 | {row['eligible']} | {row['eligible']}",
     ]
     if row.get("excluded_amount", 0):
         lines.append(f"Cosmetic surgery | 12 Aug 2026 | 1 | {row['excluded_amount']} | {row['excluded_amount']}")
@@ -100,11 +111,11 @@ def _settlement_text(row: dict) -> str:
         paid = f"Amount Paid: INR {amount}"
     eligible = int(row["eligible"])
     deductible = min(int(row["deductible"]), eligible)
+    if row["group"] == "discrepancy":
+        deductible += 1000
     copay = (eligible - deductible) * int(row["copay_percent"]) // 100
     if int(row["copay_percent"]) and (eligible - deductible) * int(row["copay_percent"]) % 100:
         copay = round((eligible - deductible) * int(row["copay_percent"]) / 100)
-    if row["group"] == "discrepancy":
-        deductible += 1000
     deductions = []
     if row.get("excluded_amount", 0):
         deductions.append(("Exclusion", int(row["excluded_amount"]), "Not covered by fictional policy"))
@@ -157,16 +168,23 @@ def generate() -> int:
         _write_bill(folder / "bill.pdf", row, scanned)
         _write_settlement(folder / "settlement.pdf", row)
         (folder / "expected-results.json").write_text(json.dumps(row, indent=2) + "\n", encoding="utf-8")
+        reviewer_terms = {
+            "annual_limit": max(10000, row["billed"]),
+            "deductible": row["deductible"],
+            "copay_percent": row["copay_percent"],
+            "room_limit_per_day": 5000,
+            "source_page": 1,
+        }
+        if row.get("excluded_amount", 0):
+            reviewer_terms["non_payable_categories"] = ["SURGERY_OT"]
+            reviewer_terms["exclusions"] = ["cosmetic surgery"]
+        if row["case_id"] == "edge_05":
+            reviewer_terms["pre_hospitalization_days"] = 30
+            reviewer_terms["post_hospitalization_days"] = 60
         (folder / "case.json").write_text(json.dumps({
             "label": "FICTIONAL SAMPLE", "case_id": row["case_id"],
             "claim_id": f"CLM-EVAL-{row['case_id'].replace('_', '-').upper()}",
-            "policy_terms_reviewer_confirmed": {
-                "annual_limit": max(10000, row["billed"]),
-                "deductible": row["deductible"],
-                "copay_percent": row["copay_percent"],
-                "room_limit_per_day": 5000,
-                "source_page": 1,
-            },
+            "policy_terms_reviewer_confirmed": reviewer_terms,
             "scanned_bill": scanned,
             "settlement_layout": row["layout"],
         }, indent=2) + "\n", encoding="utf-8")

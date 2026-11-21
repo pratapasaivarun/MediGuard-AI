@@ -33,6 +33,15 @@ def test_readme_commands_point_to_reproducible_evaluation_runner():
     assert (ROOT / "evaluation/run_all.py").is_file()
 
 
+def test_windows_demo_launcher_quotes_app_path_and_probes_health():
+    launcher = (ROOT / "run_demo.ps1").read_text(encoding="utf-8")
+    assert '$appArguments = "-m streamlit run `"$appScript`"' in launcher
+    assert 'Invoke-RestMethod -Uri "$appUrl/_stcore/health"' in launcher
+    assert '$env:APP_BASE_URL = "http://127.0.0.1:$Port"' in launcher
+    assert '$env:MEDIGUARD_ANALYSIS_ENABLED = "false"' in launcher
+    assert '$env:MEDIGUARD_LLM_EXTRACTION_FALLBACK = "false"' in launcher
+
+
 def test_decision_log_says_claimed_amount_never_sets_paid_amount():
     decisions = (ROOT / "docs" / "archive" / "DECISIONS.md").read_text(encoding="utf-8")
     assert "`Claimed amount` and `Amount claimed` are not payment evidence" in decisions
@@ -46,5 +55,5 @@ def test_docker_image_pins_app_dependencies_and_installs_ocr_as_non_root():
     assert "tesseract-ocr" in dockerfile
     assert "pip install --no-cache-dir -r requirements.txt" in dockerfile
     assert "user mediguard" in dockerfile
-    assert "streamlit" in dockerfile and "--server.port=8501" in dockerfile
+    assert "streamlit" in dockerfile and "--server.port=${port:-8501}" in dockerfile
     assert ".env" in dockerignore and ".git" in dockerignore and "data/" in dockerignore

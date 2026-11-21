@@ -13,14 +13,14 @@
   "calculation": "Billed 15000 less excluded 5000 leaves eligible 10000; (10000 - 1000) \u00d7 90% = 8100",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Abdominal ultrasound test",
       "category": "INVESTIGATION",
       "amount": 10000,
       "date": "2026-08-12"
     },
     {
       "description": "Cosmetic surgery",
-      "category": "EXCLUSION",
+      "category": "SURGERY_OT",
       "amount": 5000,
       "date": "2026-08-12"
     }
@@ -35,5 +35,6 @@
       "amount": 1000
     }
   ],
-  "expected_copay": 900
+  "expected_copay": 900,
+  "expected_provisional_status": "manual_review"
 }

@@ -7,9 +7,15 @@
     "deductible": 0,
     "copay_percent": 10,
     "room_limit_per_day": 5000,
+    "source_page": 1,
+    "non_payable_categories": [
+      "SURGERY_OT"
+    ],
+    "exclusions": [
+      "cosmetic surgery"
+    ],
     "pre_hospitalization_days": 30,
-    "post_hospitalization_days": 60,
-    "source_page": 1
+    "post_hospitalization_days": 60
   },
   "scanned_bill": true,
   "settlement_layout": "wrapped_rows"

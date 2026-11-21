@@ -1,210 +1,541 @@
 {
   "method": "BGE-small cosine similarity against fixed config prototypes; top-1",
   "threshold": 0.9,
-  "correct": 0,
-  "denominator": 27,
-  "accuracy": 0.0,
+  "synthetic_only": true,
+  "benchmark_note": "Hand-authored descriptions exercise the existing fixed category prototypes. This is a synthetic regression benchmark, not an estimate of real claim accuracy.",
+  "minimum_examples_per_category": 5,
+  "coverage_sufficient": true,
+  "underrepresented_categories": {},
+  "missing_categories": [],
+  "correct": 72,
+  "denominator": 73,
+  "accuracy": 0.9863013698630136,
   "label_distribution": {
-    "INVESTIGATION": 27,
-    "EXCLUSION": 1
+    "INVESTIGATION": 32,
+    "SURGERY_OT": 6,
+    "ICU": 5,
+    "ROOM": 5,
+    "DOCTOR_NURSING": 5,
+    "PHARMACY": 5,
+    "ADMISSION": 5,
+    "CONSUMABLE": 5,
+    "OTHER": 5
   },
-  "invalid_labels": [
-    {
-      "case_id": "edge_04",
-      "expected": "EXCLUSION"
-    }
-  ],
+  "invalid_labels": [],
   "adversarial_category_labels": 0,
-  "enabled": false,
+  "quality_gate_passed": true,
+  "runtime_integrated": false,
   "cases": [
     {
       "case_id": "match_01",
-      "description": "Eligible treatment",
+      "description": "Complete blood count (CBC) laboratory test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "match_02",
-      "description": "Eligible treatment",
+      "description": "Serum creatinine blood test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "match_03",
-      "description": "Eligible treatment",
+      "description": "Liver function laboratory panel",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "match_04",
-      "description": "Eligible treatment",
+      "description": "Urine routine and microscopy test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "match_05",
-      "description": "Eligible treatment",
+      "description": "Chest X-ray diagnostic imaging",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "match_06",
-      "description": "Eligible treatment",
+      "description": "Abdominal ultrasound scan",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "match_07",
-      "description": "Eligible treatment",
+      "description": "Electrocardiogram (ECG) diagnostic test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "match_08",
-      "description": "Eligible treatment",
+      "description": "CT head radiology scan",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "match_09",
-      "description": "Eligible treatment",
+      "description": "MRI lumbar spine imaging",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "match_10",
-      "description": "Eligible treatment",
+      "description": "Histopathology biopsy laboratory test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_01",
-      "description": "Eligible treatment",
+      "description": "Complete blood count (CBC) test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_02",
-      "description": "Eligible treatment",
+      "description": "Serum electrolyte laboratory panel",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_03",
-      "description": "Eligible treatment",
+      "description": "Liver function blood test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_04",
-      "description": "Eligible treatment",
+      "description": "Urine culture laboratory test and microscopy",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_05",
-      "description": "Eligible treatment",
+      "description": "Chest X-ray radiology imaging",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_06",
-      "description": "Eligible treatment",
+      "description": "Pelvic ultrasound diagnostic scan",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_07",
-      "description": "Eligible treatment",
+      "description": "Electrocardiogram ECG diagnostic test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_08",
-      "description": "Eligible treatment",
+      "description": "CT chest imaging study",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_09",
-      "description": "Eligible treatment",
+      "description": "MRI knee radiology scan",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "discrepancy_10",
-      "description": "Eligible treatment",
+      "description": "Tissue biopsy pathology test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "manual_01",
-      "description": "Eligible treatment",
+      "description": "Thyroid function laboratory test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "manual_02",
-      "description": "Eligible treatment",
+      "description": "Serum glucose blood test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "manual_03",
-      "description": "Eligible treatment",
+      "description": "Urine culture diagnostic test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "manual_05",
-      "description": "Eligible treatment",
+      "description": "Abdominal CT scan",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "edge_01",
-      "description": "Eligible treatment",
+      "description": "Complete blood count laboratory test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "edge_03",
-      "description": "Eligible treatment",
+      "description": "Serum sodium diagnostic test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
-      "match": false
+      "predicted": "INVESTIGATION",
+      "match": true
     },
     {
       "case_id": "edge_04",
-      "description": "Eligible treatment",
+      "description": "Abdominal ultrasound test",
       "expected": "INVESTIGATION",
-      "predicted": "ADMISSION",
+      "predicted": "INVESTIGATION",
+      "match": true
+    },
+    {
+      "case_id": "edge_04",
+      "description": "Cosmetic surgery",
+      "expected": "SURGERY_OT",
+      "predicted": "SURGERY_OT",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_001",
+      "description": "Intensive care unit bed charges",
+      "expected": "ICU",
+      "predicted": "ICU",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_002",
+      "description": "Critical care monitoring during admission",
+      "expected": "ICU",
+      "predicted": "ICU",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_003",
+      "description": "ICU room and ventilator support fee",
+      "expected": "ICU",
+      "predicted": "ICU",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_004",
+      "description": "High dependency unit nursing and monitoring",
+      "expected": "ICU",
+      "predicted": "ICU",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_005",
+      "description": "Critical care bed charges per day",
+      "expected": "ICU",
+      "predicted": "ICU",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_006",
+      "description": "General ward accommodation per night",
+      "expected": "ROOM",
+      "predicted": "ROOM",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_007",
+      "description": "Private hospital room rent for four days",
+      "expected": "ROOM",
+      "predicted": "ROOM",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_008",
+      "description": "Inpatient bed and lodging charges",
+      "expected": "ROOM",
+      "predicted": "ROOM",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_009",
+      "description": "Deluxe room stay fee",
+      "expected": "ROOM",
+      "predicted": "ROOM",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_010",
+      "description": "Ward accommodation charges",
+      "expected": "ROOM",
+      "predicted": "ROOM",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_011",
+      "description": "Consultant physician visit fee",
+      "expected": "DOCTOR_NURSING",
+      "predicted": "DOCTOR_NURSING",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_012",
+      "description": "Physician consultation visit charge",
+      "expected": "DOCTOR_NURSING",
+      "predicted": "DOCTOR_NURSING",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_013",
+      "description": "Nursing care services during hospital stay",
+      "expected": "DOCTOR_NURSING",
+      "predicted": "ROOM",
       "match": false
+    },
+    {
+      "case_id": "synthetic_014",
+      "description": "Attending physician consultation round fee",
+      "expected": "DOCTOR_NURSING",
+      "predicted": "DOCTOR_NURSING",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_015",
+      "description": "Doctor consultation professional fee",
+      "expected": "DOCTOR_NURSING",
+      "predicted": "DOCTOR_NURSING",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_016",
+      "description": "Operation theatre use charge",
+      "expected": "SURGERY_OT",
+      "predicted": "SURGERY_OT",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_017",
+      "description": "Surgical procedure and operating room fee",
+      "expected": "SURGERY_OT",
+      "predicted": "SURGERY_OT",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_018",
+      "description": "Laparoscopic surgery service charges",
+      "expected": "SURGERY_OT",
+      "predicted": "SURGERY_OT",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_019",
+      "description": "Surgeon procedure fee for hernia repair",
+      "expected": "SURGERY_OT",
+      "predicted": "SURGERY_OT",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_020",
+      "description": "Anesthesia and operation theatre charges",
+      "expected": "SURGERY_OT",
+      "predicted": "SURGERY_OT",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_021",
+      "description": "Prescription medicines dispensed by hospital pharmacy",
+      "expected": "PHARMACY",
+      "predicted": "PHARMACY",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_022",
+      "description": "Antibiotic drugs and medication charges",
+      "expected": "PHARMACY",
+      "predicted": "PHARMACY",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_023",
+      "description": "Inpatient pharmacy bill for prescribed tablets",
+      "expected": "PHARMACY",
+      "predicted": "PHARMACY",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_024",
+      "description": "Prescribed injectable medicine and IV drug charges",
+      "expected": "PHARMACY",
+      "predicted": "PHARMACY",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_025",
+      "description": "Discharge medication supplied by pharmacy",
+      "expected": "PHARMACY",
+      "predicted": "PHARMACY",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_026",
+      "description": "Complete blood count laboratory panel",
+      "expected": "INVESTIGATION",
+      "predicted": "INVESTIGATION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_027",
+      "description": "Radiology imaging with chest X-ray",
+      "expected": "INVESTIGATION",
+      "predicted": "INVESTIGATION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_028",
+      "description": "Diagnostic radiology imaging: abdominal ultrasound",
+      "expected": "INVESTIGATION",
+      "predicted": "INVESTIGATION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_029",
+      "description": "Pathology test and specimen analysis",
+      "expected": "INVESTIGATION",
+      "predicted": "INVESTIGATION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_030",
+      "description": "ECG and cardiac diagnostic tests",
+      "expected": "INVESTIGATION",
+      "predicted": "INVESTIGATION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_031",
+      "description": "Hospital admission processing fee",
+      "expected": "ADMISSION",
+      "predicted": "ADMISSION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_032",
+      "description": "Patient registration charge at intake",
+      "expected": "ADMISSION",
+      "predicted": "ADMISSION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_033",
+      "description": "Inpatient file opening and registration fee",
+      "expected": "ADMISSION",
+      "predicted": "ADMISSION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_034",
+      "description": "Administrative admission services",
+      "expected": "ADMISSION",
+      "predicted": "ADMISSION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_035",
+      "description": "Admission and discharge paperwork fee",
+      "expected": "ADMISSION",
+      "predicted": "ADMISSION",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_036",
+      "description": "Disposable sterile gloves and dressing pack",
+      "expected": "CONSUMABLE",
+      "predicted": "CONSUMABLE",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_037",
+      "description": "Syringes and catheter supplies",
+      "expected": "CONSUMABLE",
+      "predicted": "CONSUMABLE",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_038",
+      "description": "Medical disposables used during treatment",
+      "expected": "CONSUMABLE",
+      "predicted": "CONSUMABLE",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_039",
+      "description": "Wound dressing materials and gauze",
+      "expected": "CONSUMABLE",
+      "predicted": "CONSUMABLE",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_040",
+      "description": "IV cannula and single-use medical supplies",
+      "expected": "CONSUMABLE",
+      "predicted": "CONSUMABLE",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_041",
+      "description": "Miscellaneous hospital service adjustment",
+      "expected": "OTHER",
+      "predicted": "OTHER",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_042",
+      "description": "Nonclinical billing convenience fee",
+      "expected": "OTHER",
+      "predicted": "OTHER",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_043",
+      "description": "General package charge without service detail",
+      "expected": "OTHER",
+      "predicted": "OTHER",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_044",
+      "description": "Unspecified facility administration expense",
+      "expected": "OTHER",
+      "predicted": "OTHER",
+      "match": true
+    },
+    {
+      "case_id": "synthetic_045",
+      "description": "Other unclassified invoice amount",
+      "expected": "OTHER",
+      "predicted": "OTHER",
+      "match": true
     }
   ]
 }

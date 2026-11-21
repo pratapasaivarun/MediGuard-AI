@@ -7,12 +7,12 @@
   "deductible": 1000,
   "copay_percent": 10,
   "expected_payable": 8100,
-  "insurer_paid": 7100,
+  "insurer_paid": 7200,
   "expected_status": "possible_discrepancy",
-  "calculation": "Expected (10000 - 1000) \u00d7 90% = 8100; insurer paid 7100; difference 1000",
+  "calculation": "Expected payable INR 8100; insurer applied INR 1000 excess deductible, which changes payout by INR 900 after 10% co-pay",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Complete blood count (CBC) test",
       "category": "INVESTIGATION",
       "amount": 10000,
       "date": "2026-08-12"
@@ -24,5 +24,6 @@
       "amount": 2000
     }
   ],
-  "expected_copay": 900
+  "expected_copay": 800,
+  "expected_provisional_status": "possible_discrepancy"
 }

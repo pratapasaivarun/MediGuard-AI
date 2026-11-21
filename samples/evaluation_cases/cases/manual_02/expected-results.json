@@ -12,12 +12,13 @@
   "calculation": "Settlement claim ID does not match the registered claim; hold regardless of amount",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Serum glucose blood test",
       "category": "INVESTIGATION",
       "amount": 20000,
       "date": "2026-08-12"
     }
   ],
   "expected_deductions": null,
-  "expected_copay": null
+  "expected_copay": null,
+  "expected_provisional_status": "manual_review"
 }

@@ -12,5 +12,6 @@
   "calculation": "The settlement is a scan with OCR evidence requiring confirmation",
   "expected_line_items": null,
   "expected_deductions": null,
-  "expected_copay": null
+  "expected_copay": null,
+  "expected_provisional_status": "manual_review"
 }

@@ -59,14 +59,14 @@ def claimant_app(tmp_path_factory):
             "policy_terms_review_status": "provisional",
             "claimant_result": {
                 "amount_billed": 47000,
-                "amount_covered": None if is_c else 22500,
-                "amount_claimant_pays": None if is_c else 24500,
+                "amount_covered": 22500,
+                "amount_claimant_pays": 24500,
                 "deductible": 10000,
                 "copayment": 2500,
-                "amount_excluded_or_limited": 10000,
+                "amount_excluded_or_limited": 12000,
                 "covered_before_cost_sharing": 35000,
             },
-            "payable_amount": None if is_c else 22500,
+            "payable_amount": 22500,
             "deductible": 10000,
             "copayment": 2500,
             "warnings": ["room_limit_applied"],
@@ -96,23 +96,23 @@ def claimant_app(tmp_path_factory):
             Decimal("2700"),
         )] if is_b else [])
         comparison = ComparisonResult(
-            expected_patient_share=None if is_c else Decimal(str(expected["expected_patient_share"])),
-            actual_patient_share=Decimal("27200" if is_b else "24500"),
-            possible_difference=None if is_c else Decimal(str(expected["possible_difference"])),
+            expected_patient_share=Decimal(str(expected["expected_patient_share"])),
+            actual_patient_share=Decimal("27200" if is_b else "23500" if is_c else "24500"),
+            possible_difference=Decimal("-1000" if is_c else str(expected["possible_difference"])),
             categories=categories,
             status="manual_review" if is_c else expected["expected_status"],
             review_reasons=["Settlement amount needs reviewer verification."] if is_c else [],
-            billed_total=Decimal("47000"),
-            actual_insurer_payment=None if is_c else Decimal(str(expected.get("actual_insurer_payment", expected["expected_insurer_payment"]))),
-            expected_insurer_payment=None if is_c else Decimal(str(expected["expected_insurer_payment"])),
+            billed_total=Decimal("46000" if is_c else "47000"),
+            actual_insurer_payment=Decimal(str(expected.get("actual_insurer_payment", expected["expected_insurer_payment"]))),
+            expected_insurer_payment=Decimal(str(expected["expected_insurer_payment"])),
         )
         settlement = SettlementData(
             manifest["claim_number"],
-            None if is_c else Decimal(str(expected.get("actual_insurer_payment", expected["expected_insurer_payment"]))),
+            Decimal(str(expected.get("actual_insurer_payment", expected["expected_insurer_payment"]))),
             [SettlementDeduction("INVESTIGATION", Decimal("3000"), "Outside pre-hospitalization window")] if is_b else [],
             needs_review=is_c,
-            review_reasons=["Amount paid is missing."] if is_c else [],
-            bill_total=Decimal("47000"),
+            review_reasons=["BILL_TOTAL_MISMATCH: settlement bill total does not match the uploaded bill."] if is_c else [],
+            bill_total=Decimal("46000" if is_c else "47000"),
         )
         app.save_settlement_comparison(claim_id, document_hash, comparison, settlement)
         claim_labels[name] = f"{manifest['claim_number']} · {manifest['patient_name']}"
@@ -205,8 +205,10 @@ def open_result(page, claim_label):
 def test_playwright_possible_discrepancy_next_step_names_amount_and_appeal(claimant_app):
     def check(page, labels):
         open_result(page, labels["b_wrongful_deduction"])
+        page.get_by_text("Possible discrepancy found", exact=True).wait_for(timeout=10000)
         page.get_by_text("Settlement comparison", exact=True).wait_for(timeout=10000)
         body = page.locator("body").inner_text()
+        assert "Partially covered, INR 12,000.00 limited by the policy." in body
         assert "The settlement differs from the policy-based estimate by INR 2,700.00" in body, body
         assert "Settlement comparison below" in body
         assert "appeal draft" in body.casefold()
@@ -256,6 +258,22 @@ def test_playwright_only_wrongful_deduction_has_provisional_appeal_downloads(cla
         for case_name, result_text in (("a_match", "No discrepancy was identified"), ("c_manual_review", "Manual review is needed")):
             open_result(page, labels[case_name])
             page.get_by_text(result_text, exact=False).wait_for(timeout=10000)
+            if case_name == "a_match":
+                page.get_by_text("Settlement matches policy", exact=True).wait_for(timeout=10000)
+            else:
+                page.get_by_text("Manual review needed", exact=True).wait_for(timeout=10000)
             page.get_by_role("button", name="Appeal letter (PDF)").wait_for(state="detached", timeout=10000)
             page.get_by_role("button", name="Appeal letter (Word)").wait_for(state="detached", timeout=10000)
+            body = page.locator("body").inner_text()
+            assert "This looks similar to a past rejected claim" not in body
+            assert "Total bill" in body and "47,000.00" in body
+            assert "Estimated insurance share" in body and "22,500.00" in body
+            assert "Estimated amount you pay" in body and "24,500.00" in body
+            if case_name == "a_match":
+                assert "Partially Approved" in body
+                assert "Settlement matches policy" in body
+                assert "Possible difference" in body and "INR 0.00" in body
+            else:
+                assert "Manual review needed" in body
+                assert "Possible difference" in body and "INR -1,000.00" in body
     with_signed_in_page(claimant_app, check)

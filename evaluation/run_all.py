@@ -158,6 +158,12 @@ def eq(actual: Any, expected: Any) -> bool:
         return str(actual).strip().casefold() == str(expected).strip().casefold()
 
 
+def normalize_line_item_description(value: Any) -> str:
+    """Ignore parenthetical abbreviations the extractor intentionally drops."""
+    without_parentheticals = re.sub(r"\([^)]*\)", " ", str(value or ""))
+    return re.sub(r"\W+", " ", without_parentheticals).strip().casefold()
+
+
 def metric(n: int, d: int, target: float, score: float | None = None, note: str = "") -> dict[str, Any]:
     actual = score if score is not None else (n / d if d else None)
     return {"numerator": n, "denominator": d, "score": actual, "target": target,
@@ -196,15 +202,16 @@ def document(path: Path, kind: str) -> tuple[dict[str, Any], list[str]]:
 def build_claim(row: dict[str, Any]) -> tuple[ClaimResult, TypedPolicyTerms]:
     reviewer_terms = json.loads((CASES_DIR / row["case_id"] / "case.json").read_text(encoding="utf-8"))["policy_terms_reviewer_confirmed"]
     billed = Decimal(str(row["billed"]))
-    eligible = Decimal(str(row["eligible"]))
-    excluded = Decimal(str(row.get("excluded_amount", 0)))
-    items = []
-    if eligible > 0:
-        items.append(LineItem("Eligible treatment", "INVESTIGATION", eligible, source="user"))
-    exclusions: list[str] = []
-    if excluded:
-        items.append(LineItem("Cosmetic surgery", "EXCLUSION", excluded, source="user"))
-        exclusions = ["Cosmetic surgery"]
+    expected_items = row.get("expected_line_items")
+    items = [
+        LineItem(
+            item["description"], item["category"], Decimal(str(item["amount"])),
+            date.fromisoformat(item["date"]) if item.get("date") else None,
+            source="user",
+        )
+        for item in (expected_items or [])
+    ]
+    exclusions = list(reviewer_terms.get("exclusions") or [])
     terms = TypedPolicyTerms(
         sum_insured=Decimal(str(reviewer_terms["annual_limit"])),
         deductible=Decimal(str(reviewer_terms["deductible"])),
@@ -213,8 +220,9 @@ def build_claim(row: dict[str, Any]) -> tuple[ClaimResult, TypedPolicyTerms]:
         clauses={"DEDUCTIBLE": Clause("A deductible applies to the covered claim.", 1),
                  "exclusion": Clause("Cosmetic surgery is excluded.", 1)},
     )
+    field_flags = {"line_items": True} if expected_items is None else {}
     bill = BillData("Sample Patient", "POL-EVAL-FICTIONAL-2026", date(2026, 8, 10),
-                    date(2026, 8, 14), 4, billed, items)
+                    date(2026, 8, 14), 4, billed, items, field_flags)
     claim = evaluate_claim(bill, terms)
     if not isinstance(claim, ClaimResult):
         raise TypeError("Typed rule path did not return ClaimResult")
@@ -309,9 +317,9 @@ def run(ollama_on: bool = False) -> int:
             })
             expected_items = row.get("expected_line_items")
             if expected_items is not None:
-                expected_keys = Counter((re.sub(r"\W+", " ", item["description"]).strip().casefold(),
+                expected_keys = Counter((normalize_line_item_description(item["description"]),
                                          Decimal(str(item["amount"])).quantize(CENT)) for item in expected_items)
-                actual_keys = Counter((re.sub(r"\W+", " ", str(item.get("description", ""))).strip().casefold(),
+                actual_keys = Counter((normalize_line_item_description(item.get("description", "")),
                                        Decimal(str(val(item.get("amount", 0)) or 0)).quantize(CENT))
                                       for item in normalized.get("line_items", []))
                 matched = sum((expected_keys & actual_keys).values())
@@ -441,7 +449,7 @@ def run(ollama_on: bool = False) -> int:
             "actual_items": sum(r["actual_count"] for r in line_item_rows), "matched_items": sum(r["matched"] for r in line_item_rows),
             "precision": sum(r["matched"] for r in line_item_rows) / max(1, sum(r["actual_count"] for r in line_item_rows)),
             "recall": sum(r["matched"] for r in line_item_rows) / max(1, sum(r["expected_count"] for r in line_item_rows)),
-            "note": "Description and amount exact-match across hand-labeled text bills; scanned-only cases are excluded."},
+            "note": "Normalized descriptions (parenthetical abbreviations ignored) and amounts match across hand-labeled text bills; scanned-only cases are excluded."},
         "ocr_field_accuracy": metric(ocr_total + ocr_other, len(ocr_rows) * 3, .90, note=f"OCR-marked PDFs: {len(ocr_rows)}; methods: Tesseract only when reported by extraction."),
         "policy_pdf_core_term_accuracy": metric(term_correct, len(policy_rows), .95, note="Three terms (annual limit, deductible, co-pay) extracted from source PDFs and compared with hand labels; reviewer-confirmed terms files are not read."),
         "policy_pdf_term_accuracy": score_policy_terms_from_pdfs(emit=False),

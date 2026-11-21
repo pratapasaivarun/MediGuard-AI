@@ -50,7 +50,7 @@ def test_fictional_demo_comparison_finds_one_pharmacy_discrepancy():
     assert pharmacy.status == "UNEXPLAINED_DEDUCTION"
     assert pharmacy.insurer_deducted == Decimal("10000.00")
     assert pharmacy.engine_disallowed == Decimal("0")
-    assert pharmacy.payout_effect == Decimal("9000.00")
+    assert pharmacy.payout_effect == Decimal("10000.00")
     assert pharmacy.clause.page == 9
 
 
@@ -148,3 +148,62 @@ Amount Paid: 18900
     result = compare(claim, settlement, terms)
     assert result.status == "no_discrepancy"
     assert next(row for row in result.categories if row.category == "DEDUCTIBLE").insurer_deducted == Decimal("10000")
+
+
+def test_excess_confirmed_deductible_can_be_assessed_without_a_prose_clause():
+    bill = BillData(
+        patient_name="Synthetic Patient", policy_number="POL-TEST",
+        admission_date=date(2026, 8, 10), discharge_date=date(2026, 8, 12),
+        room_days=3, total_amount=Decimal("10000"),
+        line_items=[LineItem("Laboratory tests", "INVESTIGATION", Decimal("10000"))],
+    )
+    terms = PolicyTerms(
+        sum_insured=Decimal("500000"), deductible=Decimal("1000"),
+        copay_percent=Decimal("10"),
+    )
+    claim = evaluate_claim(bill, terms)
+    settlement = SettlementData(
+        "SYN-10000", Decimal("7200"),
+        [SettlementDeduction("DEDUCTIBLE", Decimal("2000"), "Deductible")],
+        copay_applied=Decimal("800"), bill_total=Decimal("10000"),
+    )
+
+    result = compare(claim, settlement, terms)
+
+    assert result.status == "possible_discrepancy"
+    assert result.possible_difference == Decimal("900.00")
+    deductible = next(row for row in result.categories if row.category == "DEDUCTIBLE")
+    assert deductible.status == "EXCESS_DEDUCTION"
+    assert deductible.payout_effect == Decimal("1000.00")
+
+
+def test_generic_exclusion_label_matches_one_confirmed_excluded_service_class():
+    bill = BillData(
+        patient_name="Synthetic Patient", policy_number="POL-TEST",
+        admission_date=date(2026, 8, 10), discharge_date=date(2026, 8, 12),
+        room_days=3, total_amount=Decimal("15000"),
+        line_items=[
+            LineItem("Diagnostic ultrasound", "INVESTIGATION", Decimal("10000")),
+            LineItem("Cosmetic surgery", "SURGERY_OT", Decimal("5000")),
+        ],
+    )
+    terms = PolicyTerms(
+        sum_insured=Decimal("500000"), deductible=Decimal("1000"),
+        copay_percent=Decimal("10"), exclusions=["cosmetic surgery"],
+    )
+    claim = evaluate_claim(bill, terms)
+    settlement = SettlementData(
+        "SYN-15000", Decimal("8100"),
+        [
+            SettlementDeduction("EXCLUSION", Decimal("5000"), "Policy exclusion"),
+            SettlementDeduction("DEDUCTIBLE", Decimal("1000"), "Policy deductible"),
+        ],
+        copay_applied=Decimal("900"), bill_total=Decimal("15000"),
+    )
+
+    result = compare(claim, settlement, terms)
+
+    assert result.status == "no_discrepancy"
+    surgery = next(row for row in result.categories if row.category == "SURGERY_OT")
+    assert surgery.insurer_deducted == Decimal("5000")
+    assert surgery.engine_disallowed == Decimal("5000.00")

@@ -1,0 +1,70 @@
+{
+  "label": "FICTIONAL CATEGORY EXAMPLES — synthetic prototype challenge set",
+  "synthetic_only": true,
+  "method_note": "Hand-authored descriptions exercise the existing fixed category prototypes. This is a synthetic regression benchmark, not an estimate of real claim accuracy.",
+  "categories": {
+    "ICU": [
+      "Intensive care unit bed charges",
+      "Critical care monitoring during admission",
+      "ICU room and ventilator support fee",
+      "High dependency unit nursing and monitoring",
+      "Critical care bed charges per day"
+    ],
+    "ROOM": [
+      "General ward accommodation per night",
+      "Private hospital room rent for four days",
+      "Inpatient bed and lodging charges",
+      "Deluxe room stay fee",
+      "Ward accommodation charges"
+    ],
+    "DOCTOR_NURSING": [
+      "Consultant physician visit fee",
+      "Physician consultation visit charge",
+      "Nursing care services during hospital stay",
+      "Attending physician consultation round fee",
+      "Doctor consultation professional fee"
+    ],
+    "SURGERY_OT": [
+      "Operation theatre use charge",
+      "Surgical procedure and operating room fee",
+      "Laparoscopic surgery service charges",
+      "Surgeon procedure fee for hernia repair",
+      "Anesthesia and operation theatre charges"
+    ],
+    "PHARMACY": [
+      "Prescription medicines dispensed by hospital pharmacy",
+      "Antibiotic drugs and medication charges",
+      "Inpatient pharmacy bill for prescribed tablets",
+      "Prescribed injectable medicine and IV drug charges",
+      "Discharge medication supplied by pharmacy"
+    ],
+    "INVESTIGATION": [
+      "Complete blood count laboratory panel",
+      "Radiology imaging with chest X-ray",
+      "Diagnostic radiology imaging: abdominal ultrasound",
+      "Pathology test and specimen analysis",
+      "ECG and cardiac diagnostic tests"
+    ],
+    "ADMISSION": [
+      "Hospital admission processing fee",
+      "Patient registration charge at intake",
+      "Inpatient file opening and registration fee",
+      "Administrative admission services",
+      "Admission and discharge paperwork fee"
+    ],
+    "CONSUMABLE": [
+      "Disposable sterile gloves and dressing pack",
+      "Syringes and catheter supplies",
+      "Medical disposables used during treatment",
+      "Wound dressing materials and gauze",
+      "IV cannula and single-use medical supplies"
+    ],
+    "OTHER": [
+      "Miscellaneous hospital service adjustment",
+      "Nonclinical billing convenience fee",
+      "General package charge without service detail",
+      "Unspecified facility administration expense",
+      "Other unclassified invoice amount"
+    ]
+  }
+}

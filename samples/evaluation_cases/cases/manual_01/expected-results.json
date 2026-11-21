@@ -12,12 +12,13 @@
   "calculation": "Paid amount is absent; no insurer comparison can be calculated safely",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Thyroid function laboratory test",
       "category": "INVESTIGATION",
       "amount": 10000,
       "date": "2026-08-12"
     }
   ],
   "expected_deductions": null,
-  "expected_copay": null
+  "expected_copay": null,
+  "expected_provisional_status": "manual_review"
 }

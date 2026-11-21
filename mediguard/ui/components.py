@@ -70,21 +70,35 @@ def _claimant_progress(step: int, detail: str) -> None:
 
 
 def _safe_status(status: Any) -> str:
-    allowed = {"approved", "partially_approved", "manual_review", "rejected", "ready_for_review", "extracted", "draft"}
+    allowed = {"approved", "partially_approved", "manual_review", "possible_discrepancy", "rejected", "ready_for_review", "extracted", "draft"}
     value = str(status or "manual_review")
     return value if value in allowed else "manual_review"
 
 
-def claim_context_html(claim: Any, status: Any) -> str:
+def claim_context_html(
+    claim: Any,
+    status: Any,
+    status_label: str | None = None,
+    secondary_badge: str | None = None,
+) -> str:
     """Render user-derived claim labels as escaped text inside trusted markup."""
     safe_status = html.escape(_safe_status(status), quote=True)
     claim_number = html.escape(str(claim["claim_number"] or ""), quote=True)
     patient = html.escape(str(claim["patient_name"] or ""), quote=True)
     policy = html.escape(str(claim["policy_number"] or "Policy number pending"), quote=True)
+    primary_label = html.escape(status_label or _status_badge(safe_status))
+    badges = (
+        f"<span class='mg-pill mg-pill-{safe_status}'>{primary_label}</span>"
+    )
+    if secondary_badge:
+        badges += (
+            f"<span class='mg-pill mg-pill-approved'>"
+            f"{html.escape(secondary_badge)}</span>"
+        )
     return (
         f"<div class='mg-context'><div><b>{claim_number}</b>"
         f"<div class='mg-card-copy'>{patient} · {policy}</div></div>"
-        f"<span class='mg-pill mg-pill-{safe_status}'>{html.escape(_status_badge(safe_status))}</span></div>"
+        f"<div style='display:flex;gap:.4rem;align-items:center;flex-wrap:wrap'>{badges}</div></div>"
     )
 
 
@@ -98,5 +112,3 @@ def claim_row_html(claim: Any) -> str:
         f"<div class='mg-card-copy'>{patient} · {hospital}</div></div>"
         f"<span class='mg-pill mg-pill-{safe_status}'>{html.escape(_status_badge(safe_status))}</span></div>"
     )
-
-

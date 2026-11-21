@@ -7,12 +7,12 @@
   "deductible": 5000,
   "copay_percent": 10,
   "expected_payable": 40500,
-  "insurer_paid": 39500,
+  "insurer_paid": 39600,
   "expected_status": "possible_discrepancy",
-  "calculation": "Expected (50000 - 5000) \u00d7 90% = 40500; difference 1000",
+  "calculation": "Expected payable INR 40500; insurer applied INR 1000 excess deductible, which changes payout by INR 900 after 10% co-pay",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Tissue biopsy pathology test",
       "category": "INVESTIGATION",
       "amount": 50000,
       "date": "2026-08-12"
@@ -24,5 +24,6 @@
       "amount": 6000
     }
   ],
-  "expected_copay": 4500
+  "expected_copay": 4400,
+  "expected_provisional_status": "possible_discrepancy"
 }

@@ -12,12 +12,13 @@
   "calculation": "20000 \u00d7 90% = 18000",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Serum creatinine blood test",
       "category": "INVESTIGATION",
       "amount": 20000,
       "date": "2026-08-12"
     }
   ],
   "expected_deductions": [],
-  "expected_copay": 2000
+  "expected_copay": 2000,
+  "expected_provisional_status": "no_discrepancy"
 }

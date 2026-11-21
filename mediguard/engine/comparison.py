@@ -52,6 +52,21 @@ def compare(claim: ClaimResult, settlement: SettlementData, terms: PolicyTerms) 
     category_review: set[str] = set()
     for row in settlement.deductions:
         category = normalize_category(row.category)
+        if category == "EXCLUSION":
+            # Some settlement letters name only the decision (“Exclusion”),
+            # while the bill and confirmed policy identify one specific
+            # excluded service class. Reconcile that label only when there is
+            # exactly one policy-excluded bill class and this deduction matches
+            # its engine-supported amount; otherwise preserve the ambiguity.
+            excluded_categories = {
+                normalize_category(line.item.category)
+                for line in claim.lines
+                if line.reason_code == "EXCLUSION" and line.disallowed > 0
+            }
+            if len(excluded_categories) == 1:
+                excluded_category = next(iter(excluded_categories))
+                if row.amount == engine_totals[excluded_category]:
+                    category = excluded_category
         insurer_totals[category] += row.amount
         if row.reason_text:
             insurer_reasons[category].append(row.reason_text)
@@ -93,7 +108,13 @@ def compare(claim: ClaimResult, settlement: SettlementData, terms: PolicyTerms) 
                 review_note = "one or more bill entries are undated or outside the stay"
             else:
                 review_note = "all dated entries fall inside the stay"
-        review = date_window_review or category == OTHER_CATEGORY or category in category_review or (difference > 0 and clause is None)
+        # Deductibles are compared against the structured, confirmed policy
+        # amount above. They do not need a second prose clause to explain a
+        # labeled deductible difference; other categories still need clause
+        # evidence before an unsupported deduction can be assessed.
+        review = date_window_review or category == OTHER_CATEGORY or category in category_review or (
+            difference > 0 and clause is None and category != "DEDUCTIBLE"
+        )
         if review:
             status = "REVIEW"
             payout_effect = Decimal("0")
@@ -102,12 +123,14 @@ def compare(claim: ClaimResult, settlement: SettlementData, terms: PolicyTerms) 
             payout_effect = Decimal("0")
         elif difference < 0:
             status = "UNDER_DEDUCTION"
-            payout_effect = Decimal("0")
+            # Category differences are already patient-share differences:
+            # the separately reported co-pay difference is another signed
+            # category and must offset or add to the total exactly once.
+            payout_effect = difference.quantize(CENT, rounding=ROUND_HALF_UP)
+            discrepancy_total += payout_effect
         else:
             status = "UNEXPLAINED_DEDUCTION" if review_note == "all dated entries fall inside the stay" or engine_amount == 0 else "EXCESS_DEDUCTION"
-            # A co-pay difference is already a patient-share amount. Applying
-            # the co-pay percentage to it again would understate its effect.
-            payout_effect = difference.quantize(CENT, rounding=ROUND_HALF_UP) if category in {"COPAY", "DEDUCTIBLE"} else (difference * (Decimal("1") - terms.copay_percent / Decimal("100"))).quantize(CENT, rounding=ROUND_HALF_UP)
+            payout_effect = difference.quantize(CENT, rounding=ROUND_HALF_UP)
             discrepancy_total += payout_effect
         comparisons.append(CategoryComparison(
             category=category,

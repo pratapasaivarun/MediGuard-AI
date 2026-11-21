@@ -9,10 +9,10 @@
   "expected_payable": 14000,
   "insurer_paid": 13000,
   "expected_status": "possible_discrepancy",
-  "calculation": "Expected 15000 - 1000 = 14000; insurer paid 13000; difference 1000",
+  "calculation": "Expected payable INR 14000; insurer applied INR 1000 excess deductible, which changes payout by INR 1000 after 0% co-pay",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Liver function blood test",
       "category": "INVESTIGATION",
       "amount": 15000,
       "date": "2026-08-12"
@@ -24,5 +24,6 @@
       "amount": 2000
     }
   ],
-  "expected_copay": 0
+  "expected_copay": 0,
+  "expected_provisional_status": "possible_discrepancy"
 }

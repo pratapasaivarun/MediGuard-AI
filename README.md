@@ -39,7 +39,7 @@ More screens: [sign-in](docs/images/01-login.png) · [document upload](docs/imag
 - Creates a watermarked provisional appeal draft only when a supported discrepancy is found.
 - Uses a LangGraph workflow described as five components (Supervisor plus Document, Policy, Decision, and Output workers); its core graph implements four deterministic worker stages under supervisor orchestration. Optional background analysis, extraction fallback, and startup warm-up remain off by default; Python decides every amount.
 - Answers supported claimant Q&A intents (amount breakdowns, coverage, settlement differences, review status, and next steps) deterministically from saved decision data. Only unmatched claim questions may use the optional, evidence-checked Ollama fallback; Q&A is read-only.
-- Keeps category suggestions disabled because the labeled category evidence scored 0/27 and adversarial category labels are absent.
+- Keeps category suggestions out of the app runtime. The fixed BGE prototype scored 72/73 on a small, synthetic-only nine-category benchmark; this offline score does not mean the feature is integrated or validated on real bills.
 
 ## How it works
 
@@ -109,8 +109,9 @@ All case documents are fictional and labeled **FICTIONAL SAMPLE**.
 
 ## Known limitations
 
-- Before reviewer confirmation, status agreement is 6/30 because conservative routing sends uncertain cases to Manual Review.
-- The category prototype gate scored 0/27 and remains disabled.
+- Before reviewer confirmation, 29/30 outcomes matched the final labels; the remaining case was correctly held for review until its exclusion was confirmed. All 30/30 matched the intended provisional routing.
+- The category prototype scored 72/73 on synthetic examples with at least five examples per category. Runtime category suggestions remain unintegrated; one nursing description was classified as room care.
+- The Render demo uses SQLite and temporary `/tmp` storage. Demo users, claims, and uploads can be lost when the service restarts or redeploys; persistent live data has not been configured.
 - A previously mentioned 43-case baseline was removed from the paper/results because its source could not be found.
 - Live LLM output varies; no seed is configured. Amounts and statuses remain deterministic and independent of that output.
 
@@ -121,11 +122,15 @@ Scores below are measured on 30 synthetic cases, not on real insurance claims. T
 | Measurement | Result |
 |---|---:|
 | Decision agreement with reviewer-confirmed terms | 30/30 |
-| Status agreement before reviewer confirmation | 6/30; 24/30 safely routed to Manual Review |
-| A visible amount, range, or specific review reason before confirmation | 30/30 |
+| Provisional status vs intended route | 30/30 |
+| Status vs final confirmed labels before review | 29/30; one exclusion correctly held for confirmation |
+| Visible amount or range before confirmation | 29/30 (the remaining case was held for exclusion review) |
+| Result shown before confirmation | 30/30 |
+| Provisional result unchanged after confirmation | 29/30; the remaining case's confirmed exclusion changed the estimate |
 | Policy terms extracted from source PDFs | 210/210 |
+| Line-item extraction on text-bill fixtures | 28/28 normalized description-and-amount matches |
 | Ollama on/off decision and amount equality | 13/13 (3 demo + 10 discrepancy cases) |
-| BGE category prototype evidence gate | 0/27 valid labeled items; disabled (not enough representative labels) |
+| BGE category prototype synthetic challenge | 72/73 (98.6%); nine categories, ≥5 examples each; runtime not integrated |
 
 ## Project structure
 

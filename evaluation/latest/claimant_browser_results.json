@@ -1,102 +1,15 @@
 {
-  "created_at": "2026-10-23T08:13:12.470002+00:00",
-  "numerator": 8,
+  "created_at": "2026-11-21T15:43:26.309902+00:00",
+  "numerator": 0,
   "denominator": 8,
-  "pass": true,
-  "time_to_first_result_seconds": [
-    1.857,
-    1.657,
-    2.658
-  ],
-  "max_time_to_first_result_seconds": 2.658,
+  "pass": false,
+  "time_to_first_result_seconds": [],
+  "max_time_to_first_result_seconds": null,
   "reviewer_refresh": {
-    "passed": true,
-    "badge_before": true,
-    "badge_after": true,
-    "amounts_before": [
-      "INR 47,000.00",
-      "INR 22,500.00",
-      "INR 24,500.00",
-      "INR 24,500.00",
-      "INR 10,000.00",
-      "INR 2,500.00",
-      "INR 12,000.00",
-      "INR 24,500.00",
-      "INR 22,500.00",
-      "INR 22,500.00",
-      "INR 0.00"
-    ],
-    "amounts_after": [
-      "INR 47,000.00",
-      "INR 22,500.00",
-      "INR 24,500.00",
-      "INR 24,500.00",
-      "INR 10,000.00",
-      "INR 2,500.00",
-      "INR 12,000.00",
-      "INR 24,500.00",
-      "INR 22,500.00",
-      "INR 22,500.00",
-      "INR 0.00"
-    ],
-    "screenshots": [
-      "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\reviewer-policy-confirmed.png",
-      "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\claimant-after-review.png"
-    ]
+    "passed": false,
+    "reason": "not run"
   },
-  "cases": [
-    {
-      "case": "a_match",
-      "expected": "no_discrepancy",
-      "passed": true,
-      "result_shown": true,
-      "screenshot": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\a_match-claimant-result.png"
-    },
-    {
-      "case": "b_wrongful_deduction",
-      "expected": "possible_discrepancy",
-      "passed": true,
-      "result_shown": true,
-      "screenshot": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\b_wrongful_deduction-claimant-result.png"
-    },
-    {
-      "case": "c_manual_review",
-      "expected": "manual_review",
-      "passed": true,
-      "result_shown": true,
-      "screenshot": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\c_manual_review-claimant-result.png"
-    },
-    {
-      "case": "empty_file",
-      "passed": true,
-      "result_shown": true,
-      "screenshot": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\empty_file.png"
-    },
-    {
-      "case": "wrong_type",
-      "passed": true,
-      "result_shown": true,
-      "screenshot": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\wrong_type.png"
-    },
-    {
-      "case": "oversized",
-      "passed": true,
-      "result_shown": true,
-      "screenshot": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\oversized.png"
-    },
-    {
-      "case": "corrupted_pdf",
-      "passed": true,
-      "result_shown": true,
-      "screenshot": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\corrupted_pdf.png"
-    },
-    {
-      "case": "missing_settlement",
-      "passed": true,
-      "result_shown": true,
-      "screenshot": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck\\missing_settlement.png"
-    }
-  ],
-  "screenshots_directory": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-4_5k6dck",
-  "failure": null
+  "cases": [],
+  "screenshots_directory": "C:\\Users\\prata\\AppData\\Local\\Temp\\mediguard-claimant-screenshots-my2hurpv",
+  "failure": "Error: BrowserType.launch: Executable doesn't exist at C:\\Users\\prata\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1248\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     playwright install                                     ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
 }

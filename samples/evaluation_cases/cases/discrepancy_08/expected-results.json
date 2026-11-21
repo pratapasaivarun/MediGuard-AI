@@ -7,12 +7,12 @@
   "deductible": 10000,
   "copay_percent": 10,
   "expected_payable": 27000,
-  "insurer_paid": 26000,
+  "insurer_paid": 26100,
   "expected_status": "possible_discrepancy",
-  "calculation": "Expected (40000 - 10000) \u00d7 90% = 27000; difference 1000",
+  "calculation": "Expected payable INR 27000; insurer applied INR 1000 excess deductible, which changes payout by INR 900 after 10% co-pay",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "CT chest imaging study",
       "category": "INVESTIGATION",
       "amount": 40000,
       "date": "2026-08-12"
@@ -24,5 +24,6 @@
       "amount": 11000
     }
   ],
-  "expected_copay": 3000
+  "expected_copay": 2900,
+  "expected_provisional_status": "possible_discrepancy"
 }

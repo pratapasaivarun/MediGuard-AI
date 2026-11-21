@@ -71,7 +71,7 @@ def test_hand_calculated_rule_amounts_match_direct_rule_path():
         claim, _terms = build_claim(row)
         assert eq(claim.insurer_share, row["expected_payable"]), row["case_id"]
         scored += 1
-    assert scored == 24
+    assert scored == sum(row["expected_payable"] is not None for row in labels["cases"])
 
 
 def test_expected_manual_review_label_does_not_force_the_actual_result(monkeypatch):

@@ -135,6 +135,31 @@ def _assess_claimant_submission(claim_id: str, user_id: str) -> dict[str, Any]:
     return assess_claim(_app, claim_id, user_id)
 
 
+def _claimant_outcome_status(result: dict[str, Any], comparison: Any) -> str:
+    """Derive the claimant headline from this claim's rules and settlement comparison."""
+    status = str(result.get("status") or "manual_review")
+    comparison_status = getattr(comparison, "status", None)
+    if comparison_status == "manual_review":
+        return "manual_review"
+    if comparison_status == "possible_discrepancy":
+        return "possible_discrepancy"
+    if status == "manual_review":
+        return "manual_review"
+    if status in {"rejected", "denied"}:
+        return "rejected"
+    if comparison_status != "no_discrepancy":
+        return status
+
+    limited = result.get("amount_excluded_or_limited")
+    if limited is None:
+        billed = result.get("amount_billed")
+        eligible = result.get("covered_before_cost_sharing")
+        if billed is None or eligible is None:
+            return status
+        limited = max(0.0, float(billed) - float(eligible))
+    return "partially_approved" if float(limited) > 0.01 else "approved"
+
+
 def _render_claimant_result(user: dict) -> None:
     claims = user_claims(user["user_id"], user)
     _page_header('CLAIM OUTCOME', 'Your claim result', 'A simple view of the policy review, your estimated responsibility, and next steps.', '✓')
@@ -151,17 +176,59 @@ def _render_claimant_result(user: dict) -> None:
     st.session_state.active_claim = claim_id
     claim = next(c for c in claims if c["claim_id"] == claim_id)
     result = _claimant_result_for_claim(claim_id, user)
-    st.markdown(claim_context_html(claim, (result or {}).get('status', claim['status'])), unsafe_allow_html=True)
     if not result:
+        st.markdown(claim_context_html(claim, claim['status']), unsafe_allow_html=True)
         st.info("Your documents have not been analyzed yet.")
         if st.button("Continue claim review", type="primary"):
             queue_page(st.session_state, "Submit documents" if user['role'] == 'claimant' else "Claim review"); st.rerun()
         return
     comparison, settlement = get_comparison_for_view(claim_id, user)
-    status = result["status"]
+    status = _claimant_outcome_status(result, comparison)
+    result = {**result, "status": status, "requires_human_review": status == "manual_review"}
+    status_label = {
+        "manual_review": "Manual review needed",
+        "possible_discrepancy": "Possible discrepancy found",
+        "approved": "Approved",
+        "partially_approved": "Partially Approved",
+        "rejected": "Rejected",
+    }.get(status, status.replace("_", " ").title())
+    secondary_badge = (
+        "Settlement matches policy"
+        if comparison is not None and comparison.status == "no_discrepancy"
+        else None
+    )
+    st.markdown(
+        claim_context_html(
+            claim,
+            status,
+            status_label=status_label,
+            secondary_badge=secondary_badge,
+        ),
+        unsafe_allow_html=True,
+    )
+    limited_amount = result.get("amount_excluded_or_limited")
+    if limited_amount is None:
+        billed = result.get("amount_billed")
+        eligible = result.get("covered_before_cost_sharing")
+        limited_amount = (
+            max(0.0, float(billed) - float(eligible))
+            if billed is not None and eligible is not None
+            else None
+        )
+    if limited_amount is None:
+        coverage_detail = "Coverage details require review."
+    elif float(limited_amount) > 0.01:
+        coverage_detail = (
+            f"Partially covered, INR {float(limited_amount):,.2f} limited by the policy."
+        )
+    else:
+        coverage_detail = "Fully covered; no amount is limited by the policy."
+    st.caption(coverage_detail)
     _render_policy_terms_badge(result.get("policy_terms_review_status"))
     if status == "manual_review":
-        st.warning("Manual review is required. The specific unresolved information and next steps are listed below.")
+        st.warning("Manual review needed. The specific unresolved information and next steps are listed below.")
+    elif status == "possible_discrepancy":
+        st.warning("Possible discrepancy found. Review the settlement comparison below.")
     elif status == "approved":
         st.success("The automated assessment indicates approval based on the information currently available.")
     elif status == "partially_approved":
@@ -280,7 +347,7 @@ def _render_claimant_result(user: dict) -> None:
                 "Amount approved": float(item_result.get("covered_amount") or 0),
                 "Status": _line_item_status_label(item_result.get("status")),
                 "Applied rule": str(item_result.get("applied_rule") or "standard").replace("_", " ").title(),
-                "Note": " ".join(part for part in [notes_by_index.get(index, ""), *[str(flag.get("note")) for flag in rules.get("history_flags", []) if flag.get("item_index") == index]] if part),
+                "Note": notes_by_index.get(index, ""),
             })
         with st.expander("Item-wise verification", expanded=False):
             st.caption("Each charge is checked against the available policy terms before claim-level deductible and copayment are applied.")
@@ -932,4 +999,3 @@ def _render_claim_review(user: dict) -> None:
         if comparison and settlement:
             _render_settlement_comparison(dict(selected_claim), comparison, settlement, user, normalized, rules)
     st.caption('Decision support only. Final determination must be confirmed by an authorized reviewer.')
-

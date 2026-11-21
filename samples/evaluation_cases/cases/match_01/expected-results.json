@@ -12,7 +12,7 @@
   "calculation": "(10000 - 1000) \u00d7 90% = 8100",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Complete blood count (CBC) laboratory test",
       "category": "INVESTIGATION",
       "amount": 10000,
       "date": "2026-08-12"
@@ -24,5 +24,6 @@
       "amount": 1000
     }
   ],
-  "expected_copay": 900
+  "expected_copay": 900,
+  "expected_provisional_status": "no_discrepancy"
 }

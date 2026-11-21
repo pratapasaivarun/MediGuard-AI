@@ -63,11 +63,23 @@ try {
     $env:CHROMA_DIR = Join-Path $storage "chroma"
     $env:MEDIGUARD_CORE_DEMO = "true"
     $env:MEDIGUARD_TRUSTED_FIXTURES = "true"
+    $env:AUTH_REQUIRED = "true"
     $env:APP_ENV = "development"
+    $env:APP_BASE_URL = "http://127.0.0.1:$Port"
     $env:MEDIGUARD_ADMIN_EMAIL = ""
+    $env:MEDIGUARD_DEV_SHOW_LINKS = "false"
+    $env:MEDIGUARD_LLM_EXTRACTION_FALLBACK = "false"
+    $env:MEDIGUARD_ANALYSIS_ENABLED = "false"
+    $env:MEDIGUARD_OLLAMA_WARMUP = "false"
     $env:MEDIGUARD_DEMO_PORT = "$Port"
     $env:OLLAMA_HOST = $hostUrl
     $env:OLLAMA_MODEL = $model
+    if (-not $env:TESSERACT_CMD) {
+        $defaultTesseract = "C:\Program Files\Tesseract-OCR\tesseract.exe"
+        if (Test-Path $defaultTesseract) {
+            $env:TESSERACT_CMD = $defaultTesseract
+        }
+    }
 
     $portInUse = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
     if ($portInUse) {
@@ -75,30 +87,30 @@ try {
     }
 
     $appLog = Join-Path $storage "streamlit.log"
-    $appProcess = Start-Process -FilePath $python -ArgumentList @(
-        "-m", "streamlit", "run", (Join-Path $root "app.py"),
-        "--server.port", "$Port", "--server.address", "127.0.0.1"
-    ) -WorkingDirectory $root -WindowStyle Hidden -RedirectStandardOutput $appLog `
+    $appScript = Join-Path $root "app.py"
+    $appArguments = "-m streamlit run `"$appScript`" --server.port $Port --server.address 127.0.0.1"
+    $appProcess = Start-Process -FilePath $python -ArgumentList $appArguments `
+      -WorkingDirectory $root -WindowStyle Hidden -RedirectStandardOutput $appLog `
       -RedirectStandardError (Join-Path $storage "streamlit-error.log") -PassThru
 
     $appUrl = "http://127.0.0.1:$Port"
     $healthy = $false
+    $healthError = "no response yet"
     for ($attempt = 0; $attempt -lt 90; $attempt++) {
         if ($appProcess.HasExited) {
             throw "Streamlit exited before becoming ready. Check $appLog"
         }
         try {
-            $health = Invoke-WebRequest -Uri "$appUrl/_stcore/health" -TimeoutSec 2
-            if ($health.StatusCode -eq 200) {
-                $healthy = $true
-                break
-            }
+            Invoke-RestMethod -Uri "$appUrl/_stcore/health" -TimeoutSec 2 | Out-Null
+            $healthy = $true
+            break
         } catch {
+            $healthError = $_.Exception.Message
             Start-Sleep -Seconds 1
         }
     }
     if (-not $healthy) {
-        throw "Streamlit did not become healthy within 90 seconds. Check $appLog"
+        throw "Streamlit did not become healthy within 90 seconds: $healthError. Check $appLog"
     }
 
     $caseRoot = Join-Path $root "samples\demo_cases"

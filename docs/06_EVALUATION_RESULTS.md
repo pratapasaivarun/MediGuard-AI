@@ -2,6 +2,16 @@
 
 **30 synthetic cases; fictional data only.**
 
+## Current synthetic improvements (2026-11-21)
+
+The current fixtures use specific fictional bill descriptions, valid service categories, and internally reconciled deductible/co-pay amounts. Source-PDF labels now include the explicit edge-case exclusion and date-window terms. The typed evaluation path reads the labeled line-item descriptions and routes unitemized charges to reviewer attention. The comparison engine can reconcile a generic settlement “Exclusion” row with exactly one bill service class when its amount matches the engine-supported exclusion; ambiguous cases remain for review.
+
+Latest results: the full synthetic comparison scorecard has **no failed cases**; comparison decisions are **30/30**, text-bill line-item extraction is **28/28** after ignoring parenthetical acronym variants, and all seven source-PDF term fields score **30/30**. The claimant app-path run produced **30/30 intended provisional routes**, **30/30 visible results**, **29/30 visible amounts or ranges**, and **10/10 safe adversarial results**. Final confirmed labels match provisional statuses in **29/30**; `edge_04` is correctly held for review until its exclusion is confirmed, so its payable amount changes after confirmation. The amount on `edge_05` is left unknown because its scan is unitemized and should be reviewed.
+
+The fixed BGE-small category prototypes scored **72/73 (98.6%)** on 28 explicitly labeled lines plus 45 hand-written synthetic examples across nine categories, with at least five challenge examples per category. One nursing-care description was predicted as room care. This benchmark does not integrate category suggestions into the app and does not establish accuracy on real bills.
+
+The Render demo currently uses SQLite at `/tmp/mediguard/mediguard.db`; its database and uploads are temporary, so a restart or redeploy can lose demo data. No persistent database or disk is configured.
+
 Ground truth was committed before this evaluation run. The runner never writes to expected labels.
 
 ## Scorecard
@@ -15,7 +25,7 @@ Ground truth was committed before this evaluation run. The runner never writes t
 | policy_pdf_core_term_accuracy | 100.0% | 90/90 | 0.95 | PASS |
 | policy_pdf_term_accuracy | deductible 30/30; copay_percent 30/30; room_limit_per_day 30/30; icu_limit_per_day 30/30; exclusions 30/30; date_window 30/30; annual_limit 30/30 | 210/210 | measured per term; no aggregate target | MEASURED |
 | retrieval | P@1 100.0%; P@3 33.3%; P@5 20.0%; R@5 100.0%; MRR 1.000 | P@1 30/30; P@3 30/90; P@5 30/150; R@5 30/30/labeled retrieved slots | P@1 ≥.8, R@5 ≥.9 | PASS |
-| rules_golden_agreement | 100.0% | 24/24 | 1.0 | PASS |
+| rules_golden_agreement | 100.0% | 23/23 | 1.0 | PASS |
 | rules_properties | 100.0% | 211/211 | 1.0 | PASS |
 | settlement_paid_amount_f1 | F1 100.0% | 28/28 | measured | MEASURED |
 | settlement_deductions_f1 | F1 100.0% | 37/37 | measured | MEASURED |
@@ -25,9 +35,9 @@ Ground truth was committed before this evaluation run. The runner never writes t
 | ollama_decision_equality | n/a | 0/0 | 1.0 | NOT RUN |
 | fault_injection | 100.0% | 3/3 | 1.0 | PASS |
 | report_rules | 100.0% | 2/2 | 1.0 | PASS |
-| browser_e2e | 100.0% | 8/8 | None | PASS |
+| browser_e2e | n/a | 0/0 | 3 demo cases and 5 upload/error cases pass | NOT RUN |
 | security | 100.0% | 3/3 | 1.0 | PASS |
-| seconds_per_claim | 0.021811 s/claim | 30/30 | measured | MEASURED |
+| seconds_per_claim | 0.015394 s/claim | 30/30 | measured | MEASURED |
 
 ## Confusion matrix
 
@@ -35,9 +45,9 @@ Rows are expected labels and columns are actual labels.
 
 | Expected \ Actual | no discrepancy | possible discrepancy | manual review |
 |---|---:|---:|---:|
-| no_discrepancy | 14 | 0 | 0 |
+| no_discrepancy | 13 | 0 | 0 |
 | possible_discrepancy | 0 | 10 | 0 |
-| manual_review | 0 | 0 | 6 |
+| manual_review | 0 | 0 | 7 |
 
 ## Case-by-case results
 
@@ -72,7 +82,7 @@ Rows are expected labels and columns are actual labels.
 | edge_02 | manual_review | manual_review | yes | — |
 | edge_03 | no_discrepancy | no_discrepancy | yes | — |
 | edge_04 | no_discrepancy | no_discrepancy | yes | — |
-| edge_05 | no_discrepancy | no_discrepancy | yes | — |
+| edge_05 | manual_review | manual_review | yes | — |
 
 ## Failed cases
 

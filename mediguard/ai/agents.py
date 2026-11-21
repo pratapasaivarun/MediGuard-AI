@@ -109,7 +109,8 @@ def recommend_next_steps(decision: dict[str, Any], rules: dict[str, Any]) -> lis
         citations = decision.get("policy_citations") or []
         if status in {"rejected", "partially_approved"} and citations and (status == "rejected" or actionable_items):
             recommendations.append(ESCALATION_GUIDANCE)
-        if rules.get("history_flags"):
+        has_own_rejection = status in {"rejected", "denied"} or bool(rules.get("rejection_record"))
+        if has_own_rejection:
             recommendations.append("This looks similar to a past rejected claim — consider reviewing why before resubmitting, or gathering additional documentation this time.")
         # Every entry is deterministic, short, and actionable. Do not silently
         # discard deadline, escalation, or claim-history guidance.

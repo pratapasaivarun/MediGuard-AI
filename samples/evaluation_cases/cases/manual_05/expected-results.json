@@ -12,12 +12,13 @@
   "calculation": "Two conflicting paid amounts are present; a reviewer must resolve them",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Abdominal CT scan",
       "category": "INVESTIGATION",
       "amount": 30000,
       "date": "2026-08-12"
     }
   ],
   "expected_deductions": null,
-  "expected_copay": null
+  "expected_copay": null,
+  "expected_provisional_status": "manual_review"
 }

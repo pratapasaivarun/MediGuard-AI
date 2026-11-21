@@ -21,6 +21,17 @@ def test_claimant_claim_context_rendering_escapes_claim_values():
     _assert_escaped(app.claim_context_html({"claim_number": PAYLOAD, "patient_name": PAYLOAD, "policy_number": "POL-1"}, "approved"))
 
 
+def test_claim_context_rendering_escapes_outcome_badges():
+    markup = app.claim_context_html(
+        {"claim_number": "CLM-1", "patient_name": "Patient", "policy_number": "POL-1"},
+        "manual_review",
+        status_label=PAYLOAD,
+        secondary_badge=PAYLOAD,
+    )
+    assert markup.count("&lt;script&gt;alert(1)&lt;/script&gt;") == 2
+    assert "<script>" not in markup
+
+
 def test_review_queue_claim_row_rendering_escapes_claim_values():
     _assert_escaped(app.claim_row_html({"claim_number": PAYLOAD, "patient_name": PAYLOAD, "hospital_name": "Hospital", "status": "draft"}))
 

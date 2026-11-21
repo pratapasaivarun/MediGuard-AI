@@ -7,7 +7,13 @@
     "deductible": 1000,
     "copay_percent": 10,
     "room_limit_per_day": 5000,
-    "source_page": 1
+    "source_page": 1,
+    "non_payable_categories": [
+      "SURGERY_OT"
+    ],
+    "exclusions": [
+      "cosmetic surgery"
+    ]
   },
   "scanned_bill": false,
   "settlement_layout": "narrative"

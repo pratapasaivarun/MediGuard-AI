@@ -18,7 +18,9 @@ ROOT = Path(__file__).resolve().parents[2]
 GROUND_TRUTH = ROOT / "samples" / "evaluation_cases" / "ground_truth.json"
 PROTOTYPES = ROOT / "config" / "category_prototypes.yaml"
 ADVERSARIAL = ROOT / "samples" / "adversarial_cases" / "casebook.json"
+SYNTHETIC_BENCHMARK = ROOT / "samples" / "evaluation_cases" / "category_benchmark.json"
 RESULT_PATH = ROOT / "evaluation" / "latest" / "category_suggestion_evaluation.json"
+MINIMUM_PER_CATEGORY = 5
 
 
 def _cosine(left: list[float], right: list[float]) -> float:
@@ -32,6 +34,11 @@ def score() -> dict[str, Any]:
     with PROTOTYPES.open(encoding="utf-8") as handle:
         prototypes: dict[str, str] = yaml.safe_load(handle)
 
+    with SYNTHETIC_BENCHMARK.open(encoding="utf-8") as handle:
+        benchmark = json.load(handle)
+    if benchmark.get("synthetic_only") is not True:
+        raise ValueError("The category benchmark must be explicitly labeled synthetic-only.")
+
     allowed = set(prototypes)
     rows = [
         (case["case_id"], item)
@@ -39,6 +46,15 @@ def score() -> dict[str, Any]:
         for item in (case.get("expected_line_items") or [])
         if isinstance(item, dict) and item.get("category")
     ]
+    synthetic_rows = [
+        (category, description)
+        for category, descriptions in benchmark["categories"].items()
+        for description in descriptions
+    ]
+    rows.extend(
+        (f"synthetic_{index:03d}", {"description": description, "category": category})
+        for index, (category, description) in enumerate(synthetic_rows, start=1)
+    )
     descriptions = list(dict.fromkeys(str(item.get("description") or "") for _, item in rows))
 
     from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
@@ -72,16 +88,31 @@ def score() -> dict[str, Any]:
         )
 
     correct = sum(row["match"] for row in evaluated)
+    label_distribution = dict(Counter(str(item["category"]).upper() for _, item in rows))
+    underrepresented = {
+        category: count for category, count in label_distribution.items()
+        if category in allowed and count < MINIMUM_PER_CATEGORY
+    }
+    missing_categories = sorted(allowed - set(label_distribution))
+    coverage_sufficient = not underrepresented and not missing_categories and not invalid_labels
     result = {
         "method": "BGE-small cosine similarity against fixed config prototypes; top-1",
         "threshold": 0.90,
+        "synthetic_only": True,
+        "benchmark_note": benchmark.get("method_note"),
+        "minimum_examples_per_category": MINIMUM_PER_CATEGORY,
+        "coverage_sufficient": coverage_sufficient,
+        "underrepresented_categories": underrepresented,
+        "missing_categories": missing_categories,
         "correct": correct,
         "denominator": len(evaluated),
         "accuracy": correct / len(evaluated) if evaluated else None,
-        "label_distribution": dict(Counter(str(item["category"]).upper() for _, item in rows)),
+        "label_distribution": label_distribution,
         "invalid_labels": invalid_labels,
         "adversarial_category_labels": adversarial_labels,
-        "enabled": bool(evaluated) and correct / len(evaluated) >= 0.90 and not invalid_labels,
+        # Passing this offline prototype benchmark does not wire it into the app.
+        "quality_gate_passed": bool(evaluated) and correct / len(evaluated) >= 0.90 and coverage_sufficient,
+        "runtime_integrated": False,
         "cases": evaluated,
     }
     return result
@@ -93,4 +124,5 @@ if __name__ == "__main__":
     RESULT_PATH.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"BGE-small category prototype score: {report['correct']}/{report['denominator']}")
     print(f"Invalid category labels: {len(report['invalid_labels'])}; adversarial category labels: {report['adversarial_category_labels']}")
-    print(f"Suggester enabled: {report['enabled']}; details: {RESULT_PATH.relative_to(ROOT)}")
+    print(f"Category coverage sufficient: {report['coverage_sufficient']}; distribution: {report['label_distribution']}")
+    print(f"Prototype quality gate passed: {report['quality_gate_passed']}; runtime integrated: {report['runtime_integrated']}; details: {RESULT_PATH.relative_to(ROOT)}")

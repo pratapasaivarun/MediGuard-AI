@@ -12,12 +12,13 @@
   "calculation": "Deduction breakdown is unreadable; evidence is insufficient to attribute the difference",
   "expected_line_items": [
     {
-      "description": "Eligible treatment",
+      "description": "Urine culture diagnostic test",
       "category": "INVESTIGATION",
       "amount": 15000,
       "date": "2026-08-12"
     }
   ],
   "expected_deductions": null,
-  "expected_copay": null
+  "expected_copay": null,
+  "expected_provisional_status": "manual_review"
 }

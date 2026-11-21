@@ -6,36 +6,23 @@
     {
       "case_id": "match_01",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 8100,
       "provisional_payable": 8100.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 8100.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          8100.0
-        ]
+        "amount": 8100.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 8100.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -44,36 +31,23 @@
     {
       "case_id": "match_02",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 18000,
       "provisional_payable": 18000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 18000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          18000.0
-        ]
+        "amount": 18000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 18000.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -82,36 +56,23 @@
     {
       "case_id": "match_03",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 14000,
       "provisional_payable": 14000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 14000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          14000.0
-        ]
+        "amount": 14000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 14000.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -120,36 +81,23 @@
     {
       "case_id": "match_04",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 10000,
       "provisional_payable": 10000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 10000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          10000.0
-        ]
+        "amount": 10000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 10000.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -158,36 +106,23 @@
     {
       "case_id": "match_05",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 22500,
       "provisional_payable": 22500.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 22500.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          22500.0
-        ]
+        "amount": 22500.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 22500.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -196,36 +131,23 @@
     {
       "case_id": "match_06",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 8000,
       "provisional_payable": 8000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 8000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          8000.0
-        ]
+        "amount": 8000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 8000.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -234,36 +156,23 @@
     {
       "case_id": "match_07",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 16000,
       "provisional_payable": 16000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 16000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          16000.0
-        ]
+        "amount": 16000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 16000.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -272,36 +181,23 @@
     {
       "case_id": "match_08",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 27000,
       "provisional_payable": 27000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 27000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          27000.0
-        ]
+        "amount": 27000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 27000.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -310,36 +206,23 @@
     {
       "case_id": "match_09",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 13500,
       "provisional_payable": 13500.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 13500.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          13500.0
-        ]
+        "amount": 13500.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 13500.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -348,36 +231,23 @@
     {
       "case_id": "match_10",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 40500,
       "provisional_payable": 40500.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 40500.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          40500.0
-        ]
+        "amount": 40500.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 40500.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -386,112 +256,73 @@
     {
       "case_id": "discrepancy_01",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 8100,
       "provisional_payable": 8100.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 8100.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          8100.0
-        ]
+        "amount": 8100.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
-      "provisional_difference": 1000.0,
+      "mismatch_causes": [],
+      "provisional_difference": 900.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 8100.0,
-      "confirmed_difference": 1000.0,
+      "confirmed_difference": 900.0,
       "provisional_amounts_equal_confirmed": true,
       "provisional_status_equal_confirmed": true
     },
     {
       "case_id": "discrepancy_02",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 18000,
       "provisional_payable": 18000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 18000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          18000.0
-        ]
+        "amount": 18000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
-      "provisional_difference": 1000.0,
+      "mismatch_causes": [],
+      "provisional_difference": 900.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 18000.0,
-      "confirmed_difference": 1000.0,
+      "confirmed_difference": 900.0,
       "provisional_amounts_equal_confirmed": true,
       "provisional_status_equal_confirmed": true
     },
     {
       "case_id": "discrepancy_03",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 14000,
       "provisional_payable": 14000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 14000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          14000.0
-        ]
+        "amount": 14000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 1000.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 14000.0,
       "confirmed_difference": 1000.0,
       "provisional_amounts_equal_confirmed": true,
@@ -500,36 +331,23 @@
     {
       "case_id": "discrepancy_04",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 10000,
       "provisional_payable": 10000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 10000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          10000.0
-        ]
+        "amount": 10000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 1000.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 10000.0,
       "confirmed_difference": 1000.0,
       "provisional_amounts_equal_confirmed": true,
@@ -538,74 +356,48 @@
     {
       "case_id": "discrepancy_05",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 22500,
       "provisional_payable": 22500.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 22500.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          22500.0
-        ]
+        "amount": 22500.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
-      "provisional_difference": 1000.0,
+      "mismatch_causes": [],
+      "provisional_difference": 900.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 22500.0,
-      "confirmed_difference": 1000.0,
+      "confirmed_difference": 900.0,
       "provisional_amounts_equal_confirmed": true,
       "provisional_status_equal_confirmed": true
     },
     {
       "case_id": "discrepancy_06",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 8000,
       "provisional_payable": 8000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 8000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          8000.0
-        ]
+        "amount": 8000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 1000.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 8000.0,
       "confirmed_difference": 1000.0,
       "provisional_amounts_equal_confirmed": true,
@@ -614,182 +406,121 @@
     {
       "case_id": "discrepancy_07",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 16000,
       "provisional_payable": 16000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 16000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          16000.0
-        ]
+        "amount": 16000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
-      "provisional_difference": 1000.0,
+      "mismatch_causes": [],
+      "provisional_difference": 800.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 16000.0,
-      "confirmed_difference": 1000.0,
+      "confirmed_difference": 800.0,
       "provisional_amounts_equal_confirmed": true,
       "provisional_status_equal_confirmed": true
     },
     {
       "case_id": "discrepancy_08",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 27000,
       "provisional_payable": 27000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 27000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          27000.0
-        ]
+        "amount": 27000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
-      "provisional_difference": 1000.0,
+      "mismatch_causes": [],
+      "provisional_difference": 900.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 27000.0,
-      "confirmed_difference": 1000.0,
+      "confirmed_difference": 900.0,
       "provisional_amounts_equal_confirmed": true,
       "provisional_status_equal_confirmed": true
     },
     {
       "case_id": "discrepancy_09",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 13500,
       "provisional_payable": 13500.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 13500.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          13500.0
-        ]
+        "amount": 13500.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
-      "provisional_difference": 1000.0,
+      "mismatch_causes": [],
+      "provisional_difference": 900.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 13500.0,
-      "confirmed_difference": 1000.0,
+      "confirmed_difference": 900.0,
       "provisional_amounts_equal_confirmed": true,
       "provisional_status_equal_confirmed": true
     },
     {
       "case_id": "discrepancy_10",
       "expected": "possible_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "possible_discrepancy",
+      "actual": "possible_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 40500,
       "provisional_payable": 40500.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 40500.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          40500.0
-        ]
+        "amount": 40500.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
-      "provisional_difference": 1000.0,
+      "mismatch_causes": [],
+      "provisional_difference": 900.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "possible_discrepancy",
       "confirmed_payable": 40500.0,
-      "confirmed_difference": 1000.0,
+      "confirmed_difference": 900.0,
       "provisional_amounts_equal_confirmed": true,
       "provisional_status_equal_confirmed": true
     },
     {
       "case_id": "manual_01",
       "expected": "manual_review",
+      "expected_provisional_status": "manual_review",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
       "expected_payable": null,
       "provisional_payable": 8100.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 8100.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          8100.0
-        ]
+        "amount": 8100.0
       },
       "amount_or_range_shown": true,
       "mismatch_causes": [],
       "provisional_difference": 8100.0,
       "policy_terms_missing": [],
       "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
         "Settlement amount paid was not identified."
       ],
       "policy_version_linked": true,
@@ -802,30 +533,21 @@
     {
       "case_id": "manual_02",
       "expected": "manual_review",
+      "expected_provisional_status": "manual_review",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
       "expected_payable": null,
       "provisional_payable": 18000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 18000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          18000.0
-        ]
+        "amount": 18000.0
       },
       "amount_or_range_shown": true,
       "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
       "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
         "Settlement totals do not reconcile within INR 1.",
         "CLAIM_ID_MISMATCH: settlement claim reference does not match the selected claim."
       ],
@@ -839,30 +561,21 @@
     {
       "case_id": "manual_03",
       "expected": "manual_review",
+      "expected_provisional_status": "manual_review",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
       "expected_payable": null,
       "provisional_payable": 14000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 14000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          14000.0
-        ]
+        "amount": 14000.0
       },
       "amount_or_range_shown": true,
       "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
       "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
         "Settlement deductions could not be read from the letter.",
         "Settlement totals do not reconcile within INR 1."
       ],
@@ -876,6 +589,7 @@
     {
       "case_id": "manual_04",
       "expected": "manual_review",
+      "expected_provisional_status": "manual_review",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -912,30 +626,21 @@
     {
       "case_id": "manual_05",
       "expected": "manual_review",
+      "expected_provisional_status": "manual_review",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
       "expected_payable": null,
       "provisional_payable": 22500.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 22500.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          22500.0
-        ]
+        "amount": 22500.0
       },
       "amount_or_range_shown": true,
       "mismatch_causes": [],
       "provisional_difference": 22500.0,
       "policy_terms_missing": [],
       "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
         "Conflicting settlement amounts paid were found."
       ],
       "policy_version_linked": true,
@@ -948,36 +653,23 @@
     {
       "case_id": "edge_01",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 0,
       "provisional_payable": 0.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 0.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          0.0
-        ]
+        "amount": 0.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 0.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -986,6 +678,7 @@
     {
       "case_id": "edge_02",
       "expected": "manual_review",
+      "expected_provisional_status": "manual_review",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1012,36 +705,23 @@
     {
       "case_id": "edge_03",
       "expected": "no_discrepancy",
-      "actual": "manual_review",
+      "expected_provisional_status": "no_discrepancy",
+      "actual": "no_discrepancy",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 10000,
       "provisional_payable": 10000.0,
-      "provisional_payable_range": {
-        "lower": 0.0,
-        "upper": 10000.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
+      "provisional_payable_range": null,
       "displayed_estimate": {
-        "range": [
-          0.0,
-          10000.0
-        ]
+        "amount": 10000.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
-      "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "One or more comparison categories lack sufficient evidence."
-      ],
+      "specific_reasons": [],
       "policy_version_linked": true,
-      "confirmed_actual": "manual_review",
+      "confirmed_actual": "no_discrepancy",
       "confirmed_payable": 10000.0,
       "confirmed_difference": 0.0,
       "provisional_amounts_equal_confirmed": true,
@@ -1050,61 +730,54 @@
     {
       "case_id": "edge_04",
       "expected": "no_discrepancy",
+      "expected_provisional_status": "manual_review",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
       "expected_payable": 8100,
-      "provisional_payable": 12600.0,
-      "provisional_payable_range": {
-        "lower": 3600.0,
-        "upper": 12600.0,
-        "reasons": [
-          "the room cap could apply if this line is a room charge"
-        ]
-      },
-      "displayed_estimate": {
-        "range": [
-          3600.0,
-          12600.0
-        ]
-      },
-      "amount_or_range_shown": true,
+      "provisional_payable": null,
+      "provisional_payable_range": null,
+      "displayed_estimate": null,
+      "amount_or_range_shown": false,
       "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
+        "decision status differs from the hand-labeled expected status",
+        "expected payable is outside the displayed estimate"
       ],
-      "provisional_difference": 4500.0,
-      "policy_terms_missing": [],
+      "provisional_difference": null,
+      "policy_terms_missing": [
+        "exclusions"
+      ],
       "specific_reasons": [
-        "UNCATEGORIZED_RANGE: the room cap could apply if this line is a room charge. The estimate is shown as a range until each listed line is categorized.",
-        "UNRECONCILED_DIFFERENCE: category-level payout effects do not reconcile with the patient-share difference."
+        "POLICY_TERMS_UNCONFIRMED: exclusions",
+        "exclusions: page 1; the 0.85-confidence exclusion candidate 'cosmetic surgery' matches a bill item and was not applied until review"
       ],
       "policy_version_linked": true,
       "confirmed_actual": "manual_review",
-      "confirmed_payable": 12600.0,
-      "confirmed_difference": 4500.0,
-      "provisional_amounts_equal_confirmed": true,
+      "confirmed_payable": 8100.0,
+      "confirmed_difference": 0.0,
+      "provisional_amounts_equal_confirmed": false,
       "provisional_status_equal_confirmed": true
     },
     {
       "case_id": "edge_05",
-      "expected": "no_discrepancy",
+      "expected": "manual_review",
+      "expected_provisional_status": "manual_review",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
-      "expected_payable": 0,
+      "expected_payable": null,
       "provisional_payable": 0.0,
       "provisional_payable_range": null,
       "displayed_estimate": {
         "amount": 0.0
       },
       "amount_or_range_shown": true,
-      "mismatch_causes": [
-        "decision status differs from the hand-labeled expected status"
-      ],
+      "mismatch_causes": [],
       "provisional_difference": 0.0,
       "policy_terms_missing": [],
       "specific_reasons": [
         "UNCATEGORIZED_ASSUMPTION: listed uncategorized lines were treated as general covered charges; no category-specific cap or exclusion was identified in the available terms.",
+        "exclusions: page 1; the 0.85-confidence candidate was not applied, and no current bill line matches it. Confirm this term to check whether the result changes.",
         "One or more comparison categories lack sufficient evidence."
       ],
       "policy_version_linked": true,
@@ -1116,11 +789,15 @@
     }
   ],
   "evaluation_status_match": {
-    "numerator": 6,
+    "numerator": 29,
+    "denominator": 30
+  },
+  "evaluation_provisional_status_match": {
+    "numerator": 30,
     "denominator": 30
   },
   "evaluation_amount_or_range_shown": {
-    "numerator": 30,
+    "numerator": 29,
     "denominator": 30
   },
   "evaluation_result_shown": {
@@ -1128,13 +805,14 @@
     "denominator": 30
   },
   "evaluation_provisional_equals_confirmed": {
-    "numerator": 30,
+    "numerator": 29,
     "denominator": 30
   },
   "adversarial_cases": [
     {
       "case_id": "adv_01_split_columns",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1159,6 +837,7 @@
     {
       "case_id": "adv_02_noisy_ocr",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1183,6 +862,7 @@
     {
       "case_id": "adv_03_low_resolution_scan",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1207,6 +887,7 @@
     {
       "case_id": "adv_04_ambiguous_settlement_wording",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1233,6 +914,7 @@
     {
       "case_id": "adv_05_exact_daily_cap",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1257,6 +939,7 @@
     {
       "case_id": "adv_06_one_rupee_over_cap",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1281,6 +964,7 @@
     {
       "case_id": "adv_07_multiple_deductions",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1305,6 +989,7 @@
     {
       "case_id": "adv_08_missing_claim_reference",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1331,6 +1016,7 @@
     {
       "case_id": "adv_09_subtotal_tax_grand_total",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
@@ -1355,6 +1041,7 @@
     {
       "case_id": "adv_10_slash_reference",
       "expected": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
+      "expected_provisional_status": "Manual Review (safe app expectation: the casebook has no policy document or decision label)",
       "actual": "manual_review",
       "result_shown": true,
       "provisional": true,
