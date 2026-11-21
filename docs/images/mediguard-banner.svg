@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="430" viewBox="0 0 1600 430" role="img" aria-labelledby="title desc">
+  <title id="title">MediGuard AI — clear, evidence-led claim review</title>
+  <desc id="desc">A healthcare claim document flows through policy evidence and transparent calculations to a review result.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1fbfa"/>
+      <stop offset="1" stop-color="#e7f0ff"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#155e75"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-25%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f3d48" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="430" rx="28" fill="url(#bg)"/>
+  <circle cx="1490" cy="40" r="180" fill="#ccebe7" opacity=".56"/>
+  <circle cx="1435" cy="390" r="115" fill="#d6e5ff" opacity=".72"/>
+  <path d="M0 360c170-82 286-75 423-16 139 60 263 34 405-25v111H0z" fill="#d6efeb" opacity=".55"/>
+
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect x="92" y="78" width="180" height="34" rx="17" fill="#d4f2ed"/>
+    <circle cx="112" cy="95" r="5" fill="#0f766e"/>
+    <text x="128" y="101" font-size="15" font-weight="700" letter-spacing="1.2" fill="#115e59">EVIDENCE-LED CLAIM REVIEW</text>
+    <text x="90" y="190" font-size="62" font-weight="750" letter-spacing="-2" fill="#12304a">Healthcare claims,</text>
+    <text x="90" y="260" font-size="62" font-weight="750" letter-spacing="-2" fill="#0f766e">made understandable.</text>
+    <text x="94" y="313" font-size="22" fill="#456174">Compare the bill, policy, and settlement with transparent calculations.</text>
+    <rect x="92" y="350" width="116" height="34" rx="17" fill="#ffffff" stroke="#d4e3e8"/>
+    <text x="150" y="372" text-anchor="middle" font-size="14" font-weight="650" fill="#35546a">Care-first</text>
+    <rect x="220" y="350" width="138" height="34" rx="17" fill="#ffffff" stroke="#d4e3e8"/>
+    <text x="289" y="372" text-anchor="middle" font-size="14" font-weight="650" fill="#35546a">Evidence-linked</text>
+    <rect x="370" y="350" width="136" height="34" rx="17" fill="#ffffff" stroke="#d4e3e8"/>
+    <text x="438" y="372" text-anchor="middle" font-size="14" font-weight="650" fill="#35546a">Human-reviewed</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="930" y="86" width="250" height="286" rx="24" fill="#ffffff"/>
+    <rect x="958" y="114" width="52" height="58" rx="12" fill="#e8f5f4"/>
+    <path d="M973 130h22m-22 9h22m-22 9h15" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+    <text x="1024" y="135" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#20384d">Claim documents</text>
+    <text x="1024" y="158" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" fill="#6b7f8e">Bill · Policy · Settlement</text>
+    <path d="M958 195h194" stroke="#e8eef1"/>
+    <text x="958" y="225" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1" fill="#738795">POLICY EVIDENCE</text>
+    <rect x="958" y="240" width="194" height="50" rx="12" fill="#f0f8f7"/>
+    <circle cx="980" cy="265" r="8" fill="#0f766e"/>
+    <path d="m976 265 3 3 6-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="998" y="261" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="650" fill="#26475a">Deductible verified</text>
+    <text x="998" y="279" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" fill="#6c8390">Source page 1</text>
+    <rect x="958" y="302" width="194" height="50" rx="12" fill="#fff8e9"/>
+    <circle cx="980" cy="327" r="8" fill="#d99026"/>
+    <path d="M980 322v6m0 3v.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <text x="998" y="323" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="650" fill="#684b1c">Review when unclear</text>
+    <text x="998" y="341" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" fill="#8a7655">No unsupported decision</text>
+  </g>
+
+  <g stroke="url(#accent)" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8">
+    <path d="M1192 230h76"/>
+    <path d="m1258 220 12 10-12 10"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1280" y="136" width="230" height="180" rx="24" fill="#ffffff"/>
+    <circle cx="1395" cy="190" r="28" fill="#e5f5f1"/>
+    <path d="M1395 171l18 7v13c0 14-9 22-18 27-9-5-18-13-18-27v-13z" fill="url(#accent)"/>
+    <path d="m1387 190 6 6 11-13" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1395" y="252" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#20384d">Transparent result</text>
+    <text x="1395" y="278" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" fill="#6b7f8e">Estimate · evidence · next step</text>
+  </g>
+</svg>
